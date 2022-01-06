@@ -307,7 +307,7 @@ abstract class ClientBase
         $this->username = $config['username'];
         $this->password = $config['password'];
         $this->customerNumber = $config['customer_number'];
-        $this->contractId = isset($config['contract_id']) ? $config['contract_id'] : null;
+        $this->contractId = $config['contract_id'] ?? null;
     }
 
     /**

@@ -21,7 +21,7 @@ class ClientException extends RequestException
         $responseBody,
         RequestInterface $request,
         ResponseInterface $response = null,
-        \Exception $previous = null,
+        \Throwable $previous = null,
         array $handlerContext = []
     ) {
         $this->responseBody = $responseBody;

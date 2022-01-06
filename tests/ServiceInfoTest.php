@@ -25,7 +25,7 @@ class ServiceInfoTest extends CanadaPostTestBase
     /**
      * Build the $serviceInfoService to be tested.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->serviceInfoService = new ServiceInfo($this->config);

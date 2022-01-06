@@ -25,7 +25,7 @@ class ReturnsTest extends CanadaPostTestBase
     /**
      * Build the $returnsService to be tested.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->returnsService = new Returns($this->config);

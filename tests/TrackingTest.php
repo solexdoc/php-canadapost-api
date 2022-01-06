@@ -24,7 +24,7 @@ class TrackingTest extends CanadaPostTestBase
     /**
      * Build the $trackingService to be tested.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->trackingService = new Tracking($this->config);
@@ -166,12 +166,10 @@ class TrackingTest extends CanadaPostTestBase
 
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unsupported type: "wrong". Supported types are "pin" and "dnc".
-     */
     public function testGetSummaryInvalidArgument()
     {
+        $this->expectExceptionMessage("Unsupported type: \"wrong\". Supported types are \"pin\" and \"dnc\".");
+        $this->expectException(\InvalidArgumentException::class);
         $mock = new MockHandler([
             new Response(200),
         ]);
@@ -183,12 +181,10 @@ class TrackingTest extends CanadaPostTestBase
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unsupported type: "wrong". Supported types are "pin" and "dnc".
-     */
     public function testGetDetailsInvalidArgument()
     {
+        $this->expectExceptionMessage("Unsupported type: \"wrong\". Supported types are \"pin\" and \"dnc\".");
+        $this->expectException(\InvalidArgumentException::class);
         $mock = new MockHandler([
             new Response(200),
         ]);

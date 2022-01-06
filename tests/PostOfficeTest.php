@@ -25,7 +25,7 @@ class PostOfficeTest extends CanadaPostTestBase
     /**
      * Build the $postOfficeService to be tested.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->postOfficeService = new PostOffice($this->config);

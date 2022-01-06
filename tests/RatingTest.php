@@ -25,7 +25,7 @@ class RatingTest extends CanadaPostTestBase
     /**
      * Build the $ratingService to be tested.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
         $this->ratingService = new Rating($this->config);
