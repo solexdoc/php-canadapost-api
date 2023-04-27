@@ -363,10 +363,17 @@ abstract class ClientBase
      */
     protected function parseResponse(Response $response)
     {
-        $xml = new \DomDocument();
-        $xml->loadXML($response->getBody());
+        $content = $response->getBody();
+        if (isset($content) && strlen($content) > 0){
+            $xml = new \DomDocument();
+            $xml->loadXML($response->getBody());
 
-        return XML2Array::createArray($xml->saveXML());
+            return XML2Array::createArray($xml->saveXML());
+        }else{
+            return [];
+        }
+
+
     }
 
     /**
