@@ -44,7 +44,7 @@ class RatingTest extends CanadaPostTestBase
             new Response(200, [], $body),
         ]);
         $handler = HandlerStack::create($mock);
-        $response = $this->ratingService->getRates('', '', 1, new Dimension(1, 1, 1), ['handler' => $handler]);
+        $response = $this->ratingService->getRates('', '','CA', 1, 1, new Dimension(1, 1, 1), ['handler' => $handler]);
 
         // Check response.
         $this->assertTrue(is_array($response['price-quotes']));
