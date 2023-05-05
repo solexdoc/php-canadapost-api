@@ -42,7 +42,9 @@ class Rating extends ClientBase
     ) {
         // Canada Post API needs all postal codes to be uppercase and no spaces.
         $originPostalCode = strtoupper(str_replace(' ', '', $originPostalCode));
-        $postalCode = strtoupper(str_replace(' ', '', $postalCode));
+        if (strtoupper($countryIsoCode) == "CA"){
+            $postalCode = strtoupper(str_replace(' ', '', $postalCode));
+        }
 
         $content = [
             'customer-number' => $this->customerNumber,
