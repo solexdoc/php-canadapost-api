@@ -40,14 +40,18 @@ class Rating extends ClientBase
         $dimensions = null,
         array $options = []
     ) {
+        $mailOnBehalfOfCustomerNo = strlen(trim($this->config['mailed_on_behalf_of_customer_number'])) > 0 ? trim($this->config['mailed_on_behalf_of_customer_number']) : $this->config['customer_number'];
+
         // Canada Post API needs all postal codes to be uppercase and no spaces.
         $originPostalCode = strtoupper(str_replace(' ', '', $originPostalCode));
         if (strtoupper($countryIsoCode) == "CA"){
             $postalCode = strtoupper(str_replace(' ', '', $postalCode));
         }
 
+        //according to the documentation https://www.canadapost-postescanada.ca/info/mc/business/productsservices/developers/services/rating/getrates/default.jsf
+        //customer-number -> The customer number of the owner of the mail (mailed on behalf of customer).
         $content = [
-            'customer-number' => $this->customerNumber,
+            'customer-number' => $mailOnBehalfOfCustomerNo,
             'parcel-characteristics' => [
                 'weight' => $weight,
             ],
